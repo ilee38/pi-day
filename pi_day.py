@@ -2,7 +2,8 @@
 
 from decimal import Decimal as Dec, getcontext as gc
 
-def PI(maxK = 317, prec = 15001, disp = 15000):  # Parameter defaults chosen to gain 1000+ digits within a few seconds
+# Parameter defaults chosen to gain 1000+ digits within a few seconds
+def PI(maxK = 317, prec = 15001, disp = 15000):
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409
     for k in range(1, maxK + 1):
@@ -12,8 +13,8 @@ def PI(maxK = 317, prec = 15001, disp = 15000):  # Parameter defaults chosen to 
         S += Dec(M * L) / X
         K += 12
     pi = 426880 * Dec(10005).sqrt() / S
-    pi = Dec(str(pi)[:disp])  # Drop few digits of precision for accuracy
-    #print("PI(maxK={} iterations, gc().prec={}, disp={} digits) =\n{}".format(maxK, prec, disp, pi))
+    # Drop a few digits of precision for accuracy
+    pi = Dec(str(pi)[:disp])
     return pi
 
 
